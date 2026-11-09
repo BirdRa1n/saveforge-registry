@@ -44,6 +44,12 @@ npm run build -- --keys test
 
 The build writes `dist/v1/` (root, channel index, bundle and signatures) and prints a conversion report: how many Ludusavi entries became profiles and why the rest were skipped.
 
+To use the result in SaveForge Desktop (whose development builds trust the same test root):
+
+```bash
+saveforge-cli registry import dist/v1
+```
+
 ### Signing keys
 
 `--keys test` signs with the **public test keys** of `saveforge-specs` (`registry/test-vectors/signing.json`). Their private seeds are public, so these bundles prove the pipeline works but must never be trusted by a release build. Production keys (an offline root key and a CI-held online key) are not set up yet; that requires a decision on where they are kept.
