@@ -1,0 +1,21 @@
+{
+  "name": "saveforge-registry",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "description": "Source of SaveForge game profiles and the tools that publish them as signed bundles",
+  "type": "module",
+  "engines": {
+    "node": ">=22.15"
+  },
+  "scripts": {
+    "fetch-upstream": "node tools/fetch-upstream.mjs",
+    "build": "node tools/build.mjs",
+    "test": "node --test tools/test/"
+  },
+  "dependencies": {
+    "ajv": "8.17.1",
+    "ajv-formats": "3.0.1",
+    "yaml": "2.9.1"
+  }
+}

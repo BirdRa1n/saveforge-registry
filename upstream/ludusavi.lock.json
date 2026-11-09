@@ -1,0 +1,13 @@
+{
+  "$comment": "Pinned Ludusavi manifest used for the upstream-ludusavi channel. Update in its own commit and review the converter report.",
+  "repository": "mtkennerly/ludusavi-manifest",
+  "commit": "2f91656d9be2cc2d880990741930903f1fe87245",
+  "committedAt": "2026-11-09T14:49:03Z",
+  "path": "data/manifest.yaml",
+  "sha256": "d9ecfb96d7ae3077a4cbe9e108d16f7d1b4f897237f6c5dbb639eefbbe60ca2f",
+  "license": {
+    "spdx": "CC-BY-NC-SA-3.0",
+    "attribution": "Save locations from the Ludusavi Manifest by Matthew T. Kennerly, compiled from PCGamingWiki (https://www.pcgamingwiki.com), licensed CC BY-NC-SA 3.0.",
+    "url": "https://github.com/mtkennerly/ludusavi-manifest"
+  }
+}

@@ -1,2 +1,2 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Code, data and keys are hashed or signed byte-for-byte: LF everywhere.
+* text=auto eol=lf
