@@ -1,0 +1,44 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Fetch pinned upstream manifest
+        run: npm run fetch-upstream
+
+      - name: Build distribution (test keys)
+        run: npm run build -- --keys test
+
+      - name: Build is deterministic
+        run: |
+          mv dist dist-first
+          npm run build -- --keys test
+          diff -r dist-first dist
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: registry-dist
+          path: dist/
