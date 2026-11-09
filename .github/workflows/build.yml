@@ -42,3 +42,29 @@ jobs:
         with:
           name: registry-dist
           path: dist/
+
+      - name: Package for GitHub Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/
+
+  # Serves dist/ at https://<owner>.github.io/saveforge-registry/, so clients
+  # use .../saveforge-registry/v1/ as a mirror. Signed with the PUBLIC test
+  # keys until production keys exist: development builds only.
+  publish:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

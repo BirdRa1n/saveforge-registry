@@ -54,6 +54,16 @@ saveforge-cli registry import dist/v1
 
 `--keys test` signs with the **public test keys** of `saveforge-specs` (`registry/test-vectors/signing.json`). Their private seeds are public, so these bundles prove the pipeline works but must never be trusted by a release build. Production keys (an offline root key and a CI-held online key) are not set up yet; that requires a decision on where they are kept.
 
+## Published distribution
+
+Every push to `main` builds the distribution and publishes `dist/` on GitHub Pages. Clients use this mirror:
+
+```
+https://birdra1n.github.io/saveforge-registry/v1/
+```
+
+It is signed with the public **test** keys (see above), so only development builds of SaveForge Desktop, which trust those keys, accept it. Each deploy replaces the whole site, which means only the current bundle stays available. That is enough for clients, which keep their own verified copies.
+
 ## Data licenses
 
 - Tools and code in this repository: [MIT](LICENSE).
