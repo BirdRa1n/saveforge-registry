@@ -102,7 +102,7 @@ const index = {
     uncompressedSize: bundleBytes.length,
     profileCount: validProfiles.length,
   },
-  source: { repository: "SaveForge/saveforge-registry", commit: registryCommit },
+  source: { repository: "BirdRa1n/saveforge-registry", commit: registryCommit },
 };
 check("registry/index.v1", index);
 
