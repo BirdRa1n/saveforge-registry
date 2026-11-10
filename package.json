@@ -1,9 +1,9 @@
 {
-  "name": "saveforge-registry",
+  "name": "savevault-registry",
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
-  "description": "Source of SaveForge game profiles and the tools that publish them as signed bundles",
+  "description": "Source of SaveVault game profiles and the tools that publish them as signed bundles",
   "type": "module",
   "engines": {
     "node": ">=22.15"

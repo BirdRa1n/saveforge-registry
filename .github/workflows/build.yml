@@ -49,8 +49,8 @@ jobs:
         with:
           path: dist/
 
-  # Serves dist/ at https://<owner>.github.io/saveforge-registry/, so clients
-  # use .../saveforge-registry/v1/ as a mirror. Signed with the PUBLIC test
+  # Serves dist/ at https://<owner>.github.io/savevault-registry/, so clients
+  # use .../savevault-registry/v1/ as a mirror. Signed with the PUBLIC test
   # keys until production keys exist: development builds only.
   publish:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'

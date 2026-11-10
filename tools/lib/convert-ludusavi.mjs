@@ -1,4 +1,4 @@
-// Converts the Ludusavi manifest into SaveForge profile v1 documents.
+// Converts the Ludusavi manifest into SaveVault profile v1 documents.
 //
 // Ludusavi format (per game name): files{path: {tags, when[{os, store}]}},
 // registry{key: {tags, when}}, installDir{name: {}}, launch{path: [...]},
@@ -33,7 +33,7 @@ const STORE_MAP = {
   other: "other",
 };
 
-// Ludusavi placeholders with no SaveForge equivalent yet.
+// Ludusavi placeholders with no SaveVault equivalent yet.
 const UNSUPPORTED_PLACEHOLDERS = ["<root>", "<game>", "<winDir>", "<regHkcu>", "<regHklm>"];
 
 const shortHash = (text) => createHash("sha256").update(text).digest("hex").slice(0, 6);
@@ -90,7 +90,7 @@ function convertCondition(when) {
   return { condition };
 }
 
-/** Ludusavi path -> SaveForge path template or a drop reason. */
+/** Ludusavi path -> SaveVault path template or a drop reason. */
 function convertPath(path) {
   for (const placeholder of UNSUPPORTED_PLACEHOLDERS) {
     if (path.includes(placeholder)) return { reason: `placeholder ${placeholder}` };

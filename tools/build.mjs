@@ -2,7 +2,7 @@
 //
 //   npm run build -- --keys test [--out <dir>]
 //
-// Output layout (saveforge-specs/registry/SPEC.md section 1):
+// Output layout (savevault-specs/registry/SPEC.md section 1):
 //   root.json(.sig), roots/1.json(.sig)
 //   channels/upstream-ludusavi/index.json(.sig)
 //   channels/upstream-ludusavi/bundles/upstream-ludusavi-<sequence>.json.zst
@@ -102,7 +102,7 @@ const index = {
     uncompressedSize: bundleBytes.length,
     profileCount: validProfiles.length,
   },
-  source: { repository: "BirdRa1n/saveforge-registry", commit: registryCommit },
+  source: { repository: "BirdRa1n/savevault-registry", commit: registryCommit },
 };
 check("registry/index.v1", index);
 

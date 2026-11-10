@@ -1,6 +1,6 @@
-# Contribuindo com o saveforge-registry
+# Contribuindo com o savevault-registry
 
-O caminho principal para contribuir com perfis de jogos vai ser o site da comunidade (SaveForge Community). Este repositório recebe os perfis aprovados lá e contém as ferramentas de publicação.
+O caminho principal para contribuir com perfis de jogos vai ser o site da comunidade (SaveVault Community). Este repositório recebe os perfis aprovados lá e contém as ferramentas de publicação.
 
 ## Regras
 

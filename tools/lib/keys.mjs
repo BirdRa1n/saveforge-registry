@@ -1,4 +1,4 @@
-// Signing keys for registry metadata (saveforge-specs/registry/SPEC.md section 2).
+// Signing keys for registry metadata (savevault-specs/registry/SPEC.md section 2).
 
 import { createHash, createPrivateKey, createPublicKey, sign } from "node:crypto";
 import { readFileSync } from "node:fs";
@@ -23,7 +23,7 @@ function keyFromSeed(seedHex) {
 }
 
 /**
- * The PUBLIC test keys from saveforge-specs/registry/test-vectors/signing.json.
+ * The PUBLIC test keys from savevault-specs/registry/test-vectors/signing.json.
  * Anyone can sign with them: bundles signed this way must never be trusted by
  * a release build.
  */

@@ -1,11 +1,11 @@
-# saveforge-registry
+# savevault-registry
 
-Source of the game profiles used by SaveForge, and the tools that publish them as **signed, static bundles** ([spec](external/specs/registry/SPEC.md)).
+Source of the game profiles used by SaveVault, and the tools that publish them as **signed, static bundles** ([spec](external/specs/registry/SPEC.md)).
 
 | Channel | Content | Status |
 |---|---|---|
 | `upstream-ludusavi` | The [Ludusavi Manifest](https://github.com/mtkennerly/ludusavi-manifest), converted to [profile v1](external/specs/profile/SPEC.md) | Working (local builds) |
-| `official` | Profiles reviewed by SaveForge maintainers (`profiles/`) | Empty for now |
+| `official` | Profiles reviewed by SaveVault maintainers (`profiles/`) | Empty for now |
 
 ## Layout
 
@@ -17,7 +17,7 @@ tools/                    Node.js tooling (no build step)
   build.mjs               converts, validates, bundles and signs into dist/v1/
   lib/                    converter, validator, bundle writer, signing keys
   test/                   node:test suites
-external/specs/           saveforge-specs submodule (schemas, path rules, test keys)
+external/specs/           savevault-specs submodule (schemas, path rules, test keys)
 ```
 
 `dist/` and `.cache/` are build outputs and are not committed.
@@ -44,25 +44,25 @@ npm run build -- --keys test
 
 The build writes `dist/v1/` (root, channel index, bundle and signatures) and prints a conversion report: how many Ludusavi entries became profiles and why the rest were skipped.
 
-To use the result in SaveForge Desktop (whose development builds trust the same test root):
+To use the result in SaveVault Desktop (whose development builds trust the same test root):
 
 ```bash
-saveforge-cli registry import dist/v1
+savevault-cli registry import dist/v1
 ```
 
 ### Signing keys
 
-`--keys test` signs with the **public test keys** of `saveforge-specs` (`registry/test-vectors/signing.json`). Their private seeds are public, so these bundles prove the pipeline works but must never be trusted by a release build. Production keys (an offline root key and a CI-held online key) are not set up yet; that requires a decision on where they are kept.
+`--keys test` signs with the **public test keys** of `savevault-specs` (`registry/test-vectors/signing.json`). Their private seeds are public, so these bundles prove the pipeline works but must never be trusted by a release build. Production keys (an offline root key and a CI-held online key) are not set up yet; that requires a decision on where they are kept.
 
 ## Published distribution
 
 Every push to `main` builds the distribution and publishes `dist/` on GitHub Pages. Clients use this mirror:
 
 ```
-https://birdra1n.github.io/saveforge-registry/v1/
+https://birdra1n.github.io/savevault-registry/v1/
 ```
 
-It is signed with the public **test** keys (see above), so only development builds of SaveForge Desktop, which trust those keys, accept it. Each deploy replaces the whole site, which means only the current bundle stays available. That is enough for clients, which keep their own verified copies.
+It is signed with the public **test** keys (see above), so only development builds of SaveVault Desktop, which trust those keys, accept it. Each deploy replaces the whole site, which means only the current bundle stays available. That is enough for clients, which keep their own verified copies.
 
 ## Data licenses
 
